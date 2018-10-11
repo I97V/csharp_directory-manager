@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:csharp_directory_manager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="852.5" Width="1854.1">
+        Title="MainWindow" Height="656" Width="1755.1">
     <Grid>
         <TextBox x:Name="tb_path" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="396"/>
         <Button Content="Browse" HorizontalAlignment="Left" Margin="411,10,0,0" VerticalAlignment="Top" Width="75" Click="Browse_Click" Height="23"/>
         <TextBox x:Name="tb_name" HorizontalAlignment="Left" Height="20" Margin="10,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162"/>
         <Button Content="Check" HorizontalAlignment="Left" Margin="411,38,0,0" VerticalAlignment="Top" Width="75" Click="Check_Click"/>
-        <DataGrid x:Name="dg_deleted" HorizontalAlignment="Left" Height="150" Margin="10,94,0,0" VerticalAlignment="Top" Width="1826" SelectionChanged="Deleted_SelectionChanged">
+        <DataGrid x:Name="dg_deleted" HorizontalAlignment="Left" Height="150" Margin="10,94,0,0" VerticalAlignment="Top" Width="1716" SelectionChanged="Deleted_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="500" Header="FullName" Binding="{Binding Path=FullName}"></DataGridTextColumn>
                 <DataGridTextColumn Width="150" Header="Name" Binding="{Binding Path=Name}"></DataGridTextColumn>
@@ -23,31 +23,7 @@
                 <DataGridTextColumn Width="250" Header="Creation Time" Binding="{Binding Path=CreationTime}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid x:Name="dg_changed" HorizontalAlignment="Left" Height="150" Margin="10,458,0,0" VerticalAlignment="Top" Width="1826" SelectionChanged="Changed_SelectionChanged">
-            <DataGrid.Columns>
-                <DataGridTextColumn Width="500" Header="FullName" Binding="{Binding Path=FullName}"></DataGridTextColumn>
-                <DataGridTextColumn Width="150" Header="Name" Binding="{Binding Path=Name}"></DataGridTextColumn>
-                <DataGridTextColumn Width="80" Header="Extension" Binding="{Binding Path=Extension}"></DataGridTextColumn>
-                <DataGridTextColumn Width="150" Header="Length" Binding="{Binding Path=Length}"></DataGridTextColumn>
-                <DataGridTextColumn Width="80" Header="ReadOnly" Binding="{Binding Path=IsReadOnly}"></DataGridTextColumn>
-                <DataGridTextColumn Width="250" Header="Write Time" Binding="{Binding Path=LastWriteFile}"></DataGridTextColumn>
-                <DataGridTextColumn Width="250" Header="Access Time" Binding="{Binding Path=LastAccessTime}"></DataGridTextColumn>
-                <DataGridTextColumn Width="250" Header="Creation Time" Binding="{Binding Path=CreationTime}"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-        <DataGrid x:Name="dg_accessed" HorizontalAlignment="Left" Height="150" Margin="10,640,0,-3" VerticalAlignment="Top" Width="1826" SelectionChanged="Accessed_SelectionChanged">
-            <DataGrid.Columns>
-                <DataGridTextColumn Width="500" Header="FullName" Binding="{Binding Path=FullName}"></DataGridTextColumn>
-                <DataGridTextColumn Width="150" Header="Name" Binding="{Binding Path=Name}"></DataGridTextColumn>
-                <DataGridTextColumn Width="80" Header="Extension" Binding="{Binding Path=Extension}"></DataGridTextColumn>
-                <DataGridTextColumn Width="150" Header="Length" Binding="{Binding Path=Length}"></DataGridTextColumn>
-                <DataGridTextColumn Width="80" Header="ReadOnly" Binding="{Binding Path=IsReadOnly}"></DataGridTextColumn>
-                <DataGridTextColumn Width="250" Header="Write Time" Binding="{Binding Path=LastWriteFile}"></DataGridTextColumn>
-                <DataGridTextColumn Width="250" Header="Access Time" Binding="{Binding Path=LastAccessTime}"></DataGridTextColumn>
-                <DataGridTextColumn Width="250" Header="Creation Time" Binding="{Binding Path=CreationTime}"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-        <DataGrid x:Name="dg_new" HorizontalAlignment="Left" Height="150" Margin="10,276,0,0" VerticalAlignment="Top" Width="1826" SelectionChanged="New_SelectionChanged">
+        <DataGrid x:Name="dg_new" HorizontalAlignment="Left" Height="150" Margin="10,276,0,0" VerticalAlignment="Top" Width="1716" SelectionChanged="New_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="500" Header="FullName" Binding="{Binding Path=FullName}"></DataGridTextColumn>
                 <DataGridTextColumn Width="150" Header="Name" Binding="{Binding Path=Name}"></DataGridTextColumn>
@@ -60,10 +36,10 @@
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Deleted" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Width="124"/>
-        <Label Content="Changed" HorizontalAlignment="Left" Margin="10,614,0,0" VerticalAlignment="Top" Width="124"/>
-        <Label Content="Accessed" HorizontalAlignment="Left" Margin="10,432,0,0" VerticalAlignment="Top" Width="124"/>
+        <Label Content="Errors" HorizontalAlignment="Left" Margin="10,432,0,0" VerticalAlignment="Top" Width="124"/>
         <Label Content="New" HorizontalAlignment="Left" Margin="10,250,0,0" VerticalAlignment="Top" Width="124"/>
         <Button Content="Open" HorizontalAlignment="Left" Margin="572,10,0,0" VerticalAlignment="Top" Width="96" Click="Open_Click" Height="22"/>
         <TextBox x:Name="tb_open_path" HorizontalAlignment="Left" Height="23" Margin="572,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="668"/>
+        <ListBox x:Name="lbox_errors"  HorizontalAlignment="Left" Height="152" Margin="10,463,0,0" VerticalAlignment="Top" Width="658"/>
     </Grid>
 </Window>

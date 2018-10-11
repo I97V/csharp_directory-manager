@@ -30,8 +30,8 @@ namespace csharp_directory_manager
 			string path_toJson = "foldersdata/" + tb_name.Text + ".json";
 
 			dg_deleted.Items.Clear();
-			dg_changed.Items.Clear();
-			dg_accessed.Items.Clear();
+			lbox_errors.Items.Clear();
+
 			dg_new.Items.Clear();
 			old_records.Clear();
 			new_records.Clear();
@@ -61,7 +61,7 @@ namespace csharp_directory_manager
 
 			//	Fill old_records
 			using (StreamReader sr = new StreamReader(path_toJson))
-				old_records.AddRange(JsonConvert.DeserializeObject<List<Record>>(sr.ReadToEnd()));
+				old_records = JsonConvert.DeserializeObject<List<Record>>(sr.ReadToEnd());
 
 			//	Rewrite file-data
 			FillNewRecords(tb_path.Text);
@@ -115,7 +115,8 @@ namespace csharp_directory_manager
 					}
 					catch(Exception ex)
 					{
-						System.Windows.MessageBox.Show(ex.ToString(), "Error to file!", MessageBoxButton.OK, MessageBoxImage.Error);
+						//System.Windows.MessageBox.Show(ex.ToString(), "Error to file!", MessageBoxButton.OK, MessageBoxImage.Error);
+						lbox_errors.Items.Add(ex.Message);
 					}
 				}
 
@@ -126,7 +127,8 @@ namespace csharp_directory_manager
 			}
 			catch(Exception ex)
 			{
-				System.Windows.MessageBox.Show(ex.ToString(), "Error to path!", MessageBoxButton.OK, MessageBoxImage.Error);
+				//System.Windows.MessageBox.Show(ex.ToString(), "Error to path!", MessageBoxButton.OK, MessageBoxImage.Error);
+				lbox_errors.Items.Add(ex.Message);
 			}
 			
 		}
@@ -163,14 +165,6 @@ namespace csharp_directory_manager
 					if(new_records[i].Name == old_records[j].Name)
 					{
 						isHas = true;
-						// Check on Write
-						if (!DateTime.Equals(new_records[i].LastWriteFile, old_records[j].LastWriteFile))
-							dg_changed.Items.Add(new_records[i]);
-
-						//	Check on Access
-						if (!DateTime.Equals(new_records[i].LastAccessTime, old_records[j].LastAccessTime))
-							dg_accessed.Items.Add(new_records[i]);
-
 						break;
 					}
 				}
@@ -185,25 +179,15 @@ namespace csharp_directory_manager
 		private void Deleted_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
 		{
 			Record r = dg_deleted.SelectedItem as Record;
-			tb_open_path.Text = r.FullName;
+			if (r != null)
+				tb_open_path.Text = r.FullName;
 		}
 
 		private void New_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
 		{
 			Record r = dg_new.SelectedItem as Record;
-			tb_open_path.Text = r.FullName;
-		}
-
-		private void Changed_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-		{
-			Record r = dg_changed.SelectedItem as Record;
-			tb_open_path.Text = r.FullName;
-		}
-
-		private void Accessed_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-		{
-			Record r = dg_accessed.SelectedItem as Record;
-			tb_open_path.Text = r.FullName;
+			if (r != null)
+				tb_open_path.Text = r.FullName;
 		}
 	}
 }
