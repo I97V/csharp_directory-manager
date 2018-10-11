@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+/.vs
+/csharp_directory-manager/bin
+/csharp_directory-manager/obj
